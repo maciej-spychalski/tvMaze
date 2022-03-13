@@ -8,13 +8,18 @@ body {
 
 .shows-wrapper {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   flex-wrap: wrap;
 }
 
 .shows-wrapper .card {
   width: 24%;
   margin-bottom: 1.5%;
+  margin-right: 1%;
+}
+
+.shows-wrapper .card:nth-of-type(4n) {
+  margin-right: 0;
 }
 
 .show-preview {
