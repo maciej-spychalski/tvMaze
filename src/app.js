@@ -87,11 +87,13 @@ class TvMaze {
       img = createDOMElem('img', 'card-img-top', null, 'https://via.placeholder.com/210x295')
     }
 
-    if (show.summary) {
+    const summary = this.removeTags(show.summary)
+
+    if (summary) {
       if (isDetailed) {
-        p = createDOMElem('p', 'card-text', show.summary)
+        p = createDOMElem('p', 'card-text', summary)
       } else {
-        p = createDOMElem('p', 'card-text', `${show.summary.slice(0, 80)}...`)
+        p = createDOMElem('p', 'card-text', `${summary.slice(0, 80)}...`)
       }
     } else {
       p = createDOMElem('p', 'card-text', 'There is no summary for that show yet.')
@@ -112,6 +114,15 @@ class TvMaze {
     divCardBody.appendChild(btn)
 
     return divCard
+  }
+
+  removeTags = body => {
+    if ((body===null) || (body===''))
+        return "false";
+   
+    const regex = /(<([^>]+)>)/ig
+    const result = body.replace(regex, "")
+    return result
   }
 
 }
